@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>נוכחות</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="access.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Secular+One&display=swap');
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <h1>Mego</h1>
+
+    <div class="wrap">
+        <img src="fonts/img-mego.png" alt="">
+        <div class="nav" id="nav">
+
+            <label class="radio-wrap" data-radio="radio-1">
+                <input type="radio" name="en-ex" class="input" id="entrance" value="1" onclick="show(1)" checked>
+                <span class="radio-mark">כניסה</span>
+            </label>
+
+            <label class="radio-wrap" data-radio="radio-2">
+                <input type="radio" name="en-ex" class="input" id="exit" value="2" onclick="show(2)">
+                <span class="radio-mark">יציאה</span>
+            </label>
+
+        </div>
+
+
+        <main>
+            <div class="content" id="cont">
+                <div id="day-time">בוקר טוב</div>
+                <div class="radio-content radio-1">
+
+                    <form id="form-en"
+                        action="https://docs.google.com/forms/u/3/d/e/1FAIpQLSf-ndyAR8mctQt13B09byYb7Rd3rxXmqoDsLZRGmZJKgG0sUg/formResponse">
+                        <div id="form">
+                            <label for="name">שם:</label>
+                            <input type="text" name="entry.845591474" id="user-name-en" autocomplete="name" required>
+                            <div class="check" id="check-box">
+                                <input type="checkbox" name="checkbox" onclick="remember()">
+                                <label for="checkbox">זכור אותי</label>
+                            </div>
+                            <div class="box-date">
+                                <div>
+                                    <label for="date">תאריך:</label>
+                                    <input type="date" name="entry.449808134" id="date-picker-en" required>
+                                </div>
+                                <div>
+                                    <label for="time">שעה:</label>
+                                    <input type="time" name="entry.1338182873" id="time-picker-en" required>
+                                </div>
+                            </div>
+                            <label for="text">הערות:</label>
+                            <textarea name="entry.2069420785" id="" cols="10" rows="3"></textarea>
+                        </div>
+                        <input type="submit" value="כניסה" onclick="enter()" id="sub-en">
+
+                        <div class="pop-up" id="pop-up_true">
+                            <h2>בוצעה כניסה היום!<h2>
+                                    <p>רוצה להירשם שוב?</p>
+                                    <div class="btn" onclick="closeExp()">כן, אני רוצה</div>
+                                    <h5 id="en-time"></h5>
+                                    <!-- <h6 id="fill-en-time"></h6> -->
+
+                        </div>
+                        <div class="submit-form" id="sub-form_en">
+                            <p>רישום כניסה...</p>
+                        </div>
+                    </form>
+
+                    <!-- 
+       קישור:
+       https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrbXsSllqYOF5VXGN321DfDzYOmM5Dq8k4hVd3Tg1z-ai0Jw/formResponse
+       שם:1697426257
+       תאריך:2021143902
+       שעה:228945297
+       הערות:180594950
+       -->
+                    <form id="form-ex"
+                        action="https://docs.google.com/forms/u/3/d/e/1FAIpQLSeIRoJK7NuC8Wxc9E15bqEb64Ykx4HygRxkt9WoOHWJyuFEaw/formResponse">
+                        <div id="form">
+                            <label for="name">שם:</label>
+                            <input type="text" name="entry.752771906" id="user-name-ex" autocomplete="name" required>
+
+                            <div class="box-date">
+                                <div>
+                                    <label for="date">תאריך:</label>
+                                    <input type="date" name="entry.1555093631" id="date-picker-ex" required>
+                                </div>
+                                <div>
+                                    <label for="time">שעה:</label>
+                                    <input type="time" name="entry.932080417" id="time-picker-ex" required>
+                                </div>
+                            </div>
+                            <label for="text">הערות:</label>
+                            <textarea name="entry.2021385351" id="" cols="10" rows="3"></textarea>
+                            <input type="submit" value="יציאה" onclick="exit()" id="sub-ex">
+                        </div>
+
+                        <div class="pop-up" id="pop-upEx_true">
+                            <h2>בוצעה יציאה היום!<h2>
+                                    <p>רוצה להירשם שוב?</p>
+                                    <div class="btn" onclick="closeExpEx()">כן, אני רוצה</div>
+                                    <h5 id="ex-time"></h5>
+                                    <!-- <h6 id="fill-ex-time"></h6> -->
+                        </div>
+
+                        <div class="pop-up" id="pop-up_false">
+                            <h2>לא נרשמת הבוקר!</h2>
+                            <p>רוצה להירשם עכשיו?</p>
+                            <div class="btn" onclick="moveEx()">כן, אני רוצה</div>
+                            <div onclick="closeEx()">
+                                <u>לא, אני מעוניין להמשיך ליציאה</u>
+                            </div>
+                        </div>
+
+
+                        <div class="submit-form" id="sub-form_ex">
+                            <p>רישום יציאה...</p>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- <div id="extra1"></div>
+    <div id="extra2">
+        <img src="img-blue-mego(2).png" alt="">
+    </div> -->
+
+    <div id="not">
+        <p>רוצים לקבל תזכורת?</p>
+        <u onclick="not()">לחץ כאן!</u>
+    </div>
+
+    <div class="cookie" id="cookie">
+
+        <!-- <div class="h1">הודעה בדבר שימוש בעוגיות</div> -->
+        <p>אנו משתמשים בעוגיות לשמירת מידע אישי וכללי לשיפור השימוש באתר.</p>
+        <button>אישור</button>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
